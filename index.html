@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title><!-- Pre-apply dark theme to avoid flash -->
+<!-- 1) Pre-apply the dark class before paint (no flash) -->
+<!-- 1) Pre-apply the dark class before paint (no flash) -->
+<script>
+  (function () {
+    try {
+      const t = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if ((t && t === 'dark') || (!t && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch {}
+  })();
+</script>
+
+<!-- 2) Tell the CDN to use class-based dark mode (IMPORTANT) -->
+<script>
+  window.tailwind = window.tailwind || {};
+  window.tailwind.config = { darkMode: 'class' };
+</script>
+
+<!-- 3) Load Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
